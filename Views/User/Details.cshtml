@@ -1,0 +1,35 @@
+@model MVC_EduHub_Project.Models.User
+ 
+@{
+    ViewBag.Title = "User Details";
+    Layout = "~/Views/Shared/_LayoutEducatorIndex.cshtml";
+    var photoPath = "~/images/" + (Model.ProfileImage ?? "noimage.jpg");
+}
+<h1>Details</h1>
+ 
+<div class="row justify-content-center m-3">
+<div class="col-sm-8">
+<div class="card">
+<div class="card-header">
+<h1>@Model.UserName</h1>
+</div>
+ 
+            <div class="card-body text-center">
+<img class="card-img-top" src="@photoPath" asp-append-version="true" style="width: 150px;"/>
+<h4>UserId: @Model.UserId</h4>
+<h4>Role: @Model.role</h4>
+<h4>Email: @Model.email</h4>
+<h4>Mobile Number: @Model.mobileNumber</h4>
+ 
+ 
+ 
+            </div>
+<div class="card-footer text-center">
+@* <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.UserId">Edit</a>
+<a asp-action="Delete" class="btn btn-danger" asp-route-id="@Model.UserId">Delete</a>
+<a asp-controller="Employee"  asp-action="index" class="btn btn-warning">Back To List</a> *@
+</div>
+</div>
+</div>
+</div>
+ 

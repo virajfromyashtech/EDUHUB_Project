@@ -1,0 +1,83 @@
+@model MVC_EduHub_Project.Models.User
+
+@{
+    ViewBag.Title = "Edit User";
+    Layout = "~/Views/Shared/_LayoutStudentIndex.cshtml";
+    var photoPath = "~/images/" + (Model.ProfileImage ?? "noimage.jpg");
+}
+
+<h1>Edit User</h1>
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Edit @Model.UserName</h2>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="UserName" class="control-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="email" class="control-label"></label>
+                        <input asp-for="email" class="form-control" />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="mobileNumber" class="control-label"></label>
+                        <input asp-for="mobileNumber" class="form-control" />
+                        <span asp-validation-for="mobileNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="role" class="control-label"></label>
+                        <select asp-for="role" class="form-control">
+                            <option value="Student">Student</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                        <span asp-validation-for="role" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ProfileImage" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="ProfileImage" class="custom-file-input form-control" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <img class="img-thumbnail" src="@photoPath" asp-append-version="true" style="width: 150px;" />
+                    </div>
+                </div>
+
+                <div class="card-footer text-center">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Details" asp-route-id="@Model.UserId" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            });
+        });
+    </script>
+}

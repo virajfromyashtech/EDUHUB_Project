@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        background-image: url('/images/background.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .content-wrapper {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+        max-width: 300px;
+        margin-bottom: 2rem;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-8 text-center content-wrapper">
+            <img src="~/EduHub-logo-01.png" alt="EduHub Logo" class="img-fluid logo" />
+            <h1 class="display-4 mb-4">Welcome to EduHub!</h1>
+            <p class="lead">Empowering education through innovation and collaboration.</p>
+            <a asp-controller="User" asp-action="Login" class="btn btn-primary btn-lg mt-3">Get Started</a>
+        </div>
+    </div>
+</div>

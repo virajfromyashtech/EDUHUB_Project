@@ -1,0 +1,47 @@
+@model IEnumerable<MVC_EduHub_Project.Models.Course>
+
+@{
+    ViewData["Title"] = "All Courses";
+    Layout = "~/Views/Shared/_LayoutStudentIndex.cshtml";
+}
+
+<h1 class="display-4 text-center mb-4">All Courses</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.title)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.description)</p>
+                        <p class="card-text"><strong>Start Date:</strong> @Html.DisplayFor(modelItem => item.courseStartDate)</p>
+                        <p class="card-text"><strong>End Date:</strong> @Html.DisplayFor(modelItem => item.CourseEndDate)</p>
+                        <p class="card-text"><strong>Category:</strong> @Html.DisplayFor(modelItem => item.category)</p>
+                        <p class="card-text"><strong>Level:</strong> @Html.DisplayFor(modelItem => item.level)</p>
+                        <a asp-controller="Enrollment" asp-action="Create" asp-route-id="@item.courseId" class="btn btn-primary">Enroll Course</a>
+                        <a asp-controller="Feedback" asp-action="Create" asp-route-id="@item.courseId" class="btn btn-warning">Give Feedback</a>
+                        @Html.ActionLink("Materials", "Index", "Material", new { id = item.courseId }, new { @class = "btn btn-info", title = "View course materials" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .btn {
+        margin: 5px 0;
+    }
+</style>

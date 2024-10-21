@@ -1,0 +1,52 @@
+@model IEnumerable<MVC_EduHub_Project.ViewModels.FeedbackByUserName>
+ 
+@{
+    ViewData["Title"] = "All Feedback by id";
+    Layout = "~/Views/Shared/_LayoutEducatorIndex.cshtml";
+}
+ 
+<h1>Course List</h1>
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserFeedback)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach(var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserFeedback)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+           
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseId })  
+                @Html.ActionLink("Details", "Details", new {id= item.CourseId  })  
+                @Html.ActionLink("Add Material", "Addmaterial", new { id=item.CourseId })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>
+<div class="mt-3">
+    <a asp-action="GetCourseByUserId" asp-controller="Educator" class="btn btn-secondary">Back to List</a>
+</div>
+ 
+ 

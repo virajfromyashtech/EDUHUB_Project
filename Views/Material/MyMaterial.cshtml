@@ -1,0 +1,52 @@
+@model IEnumerable<MVC_EduHub_Project.Models.Material>
+ 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "/Views/Shared/_LayoutEducatorIndex.cshtml";
+}
+ 
+ 
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.materialId)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.courseId)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.materialId)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.courseId)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @* @Html.ActionLink("Details", "Details", new {id=item.materialId}) | *@
+                @Html.ActionLink("EditMaterial", "EditMaterial", new { id=item.materialId })
+                @* @Html.ActionLink("Delete", "Delete", new { id=item.CourseId}) *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ 
+ 

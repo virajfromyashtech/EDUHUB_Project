@@ -1,0 +1,49 @@
+@model MVC_EduHub_Project.Models.Feedback
+ 
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutStudentIndex.cshtml";
+}
+ 
+<h1>Feedback</h1>
+ 
+<h4>Feedback</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <div class="form-group">
+                <label asp-for="FeedbackId" class="control-label"></label>
+                <input asp-for="FeedbackId" class="form-control" />
+                <span asp-validation-for="FeedbackId" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="userId" class="control-label"></label>
+                <input asp-for="userId" class="form-control" value="@TempData["userid"]" readonly/>
+                @{TempData.Keep("userid");}
+                <span asp-validation-for="userId" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for = "courseId" value="@ViewBag.courseId">
+            <div class="form-group">
+                <label asp-for="UserFeedback" class="control-label"></label>
+                <input asp-for="UserFeedback" class="form-control" />
+                <span asp-validation-for="UserFeedback" class="text-danger"></span>
+            </div><br>
+            @* <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+ 
+<div>
+    <a asp-controller= "Educator" asp-action="AllCourse">Back to List</a>
+</div>
+
+  

@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Student Section";
+    Layout = "~/Views/Shared/_LayoutStudentIndex.cshtml";
+    @* var photoPath = "~/images/" + (Model.ProfileImage ?? "noimage.jpg"); *@
+}
+<h1>
+    Welcome Student, @ViewBag.Name
+</h1>
+
+<!-- Add your circular image here -->
+@* <img src="~/images/student-profile.jpg" alt="Student Profile" class="circular-image" /> *@
+@* <img class="card-img-top" src="@photoPath" asp-append-version="true" />  *@
+
+<div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Courses</h5>
+                            <p class="card-text">View your enrolled courses and assignments.</p>
+                            @* <a href="#" class="btn btn-primary">Go to Courses</a> *@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Grades</h5>
+                            <p class="card-text">Check your current grades and academic progress.</p>
+                            @* <a href="#" class="btn btn-primary">View Grades</a> *@
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Schedule</h5>
+                            <p class="card-text">Access your class schedule and important dates.</p>
+                            @* <a href="#" class="btn btn-primary">See Schedule</a> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+    .circular-image {
+        width: 100px; /* Set the desired width */
+        @* height: 100px; /* Set the desired height */ *@
+        border-radius: 50%; /* This makes the image circular */
+        object-fit: cover; /* This ensures the image covers the entire area */
+    }
+</style>
